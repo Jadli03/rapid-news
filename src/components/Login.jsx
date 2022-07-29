@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import FormContainer from './FormContainer'
-import {NavLink }from 'react-bootstrap'
+import { NavLink }from 'react-bootstrap'
 const Login= () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
-    <FormContainer>
+    <div className='login-page'>
+    <FormContainer >
       <h1>Sign In</h1>
      
       <Form>
@@ -45,6 +46,7 @@ const Login= () => {
         </Col>
       </Row>
     </FormContainer>
+    </div>
   )
 }
 

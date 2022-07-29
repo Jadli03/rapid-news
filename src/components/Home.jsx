@@ -7,47 +7,44 @@ import Container from 'react-bootstrap/Container';
 import NewsCarousel from  './NewsCarousel'
 const HomeScreen = () => {
 
- const[loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
+  const [topheadlines, setTopHeadlines] = useState([])
 
-  const [topheadlines, setTopHeadlines] = useState([]);
 
-  const fetchTopHeadlines =  () => {
-    axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=cb405a88a7eb4e2f9096feab96c45403')
-    .then((response) => {
+  const fetchTopHeadlines =  async () => {
+   const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=cb405a88a7eb4e2f9096feab96c45403')
       setTopHeadlines(response.data.articles.filter(top => top.urlToImage != null))
       setLoading(false)
-    })
-    .catch(err => console.log(err) )
   }
+
   useEffect(() => {
     fetchTopHeadlines()
   },[])
 
-
   return (
     <>
     <NewsCarousel topheadlines={topheadlines} /> 
-      <h1 style={{marginTop: '40px'}}>Top Trending</h1>
+      <h1 style={{marginTop: '5px'}}>Top Trending</h1>
       {loading ? (
         <Loader />
       ) : (
         <>
+      
         <Container>
-          <Row>
+        <Row>
             {topheadlines.map((topnews) => (
                 <Col sm={6} md={6} lg={6} xl={4}>
                 <NewsCard topnews={topnews} />
               </Col>
             ))}
-          </Row>
+
+      </Row>
           </Container>
-          {/* <Paginate
-            pages={pages}
-            page={page}
-            keyword={keyword ? keyword : ''}
-          /> */}
         </>
       )}
+
+    
+        
     </>
   )
 }

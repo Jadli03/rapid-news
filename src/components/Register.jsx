@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
@@ -16,6 +16,7 @@ const Register = () => {
 
 
   return (
+    <div className='signup-page'>
     <FormContainer>
       <h1>Sign Up</h1>
       <Form>
@@ -73,6 +74,7 @@ const Register = () => {
         </Col>
       </Row>
     </FormContainer>
+    </div>
   )
 }
 

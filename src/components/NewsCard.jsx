@@ -1,6 +1,4 @@
 import React from 'react'
-import {NavLink} from 'react-bootstrap'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 const NewsCard = ({topnews}) => {
   return (
@@ -20,9 +18,9 @@ const NewsCard = ({topnews}) => {
     // </Card>
 
     <Card className='card-custom' style={{ margin: '10px', width: '21rem' }}>
-      <Card.Img variant="top" src={topnews.urlToImage} />
+      <Card.Img style={{height: '250px' }} variant="top" src={topnews.urlToImage} alt={topnews.source.name} />
       <Card.Body>
-        <Card.Title>{topnews.title.slice(0,100)}</Card.Title>
+        <Card.Title style={{textAlign:'justify'}}>{topnews.title.slice(0,150)}</Card.Title>
       </Card.Body>
     </Card>
 
