@@ -11,9 +11,6 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
- 
-
-
 
   return (
     <div className='signup-page'>

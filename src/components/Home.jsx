@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Loader from '../components/Loader'
 import NewsCard from './NewsCard'
-import axios from 'axios'
 import Container from 'react-bootstrap/Container';
 import NewsCarousel from  './NewsCarousel'
+import NewsPage from './NewsPage'
+import {data} from './topheadlinedata'
 const HomeScreen = () => {
-
-  const [loading, setLoading] = useState(true)
-  const [topheadlines, setTopHeadlines] = useState([])
-
-
-  const fetchTopHeadlines =  async () => {
-   const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=cb405a88a7eb4e2f9096feab96c45403')
-      setTopHeadlines(response.data.articles.filter(top => top.urlToImage != null))
-      setLoading(false)
-  }
-
-  useEffect(() => {
-    fetchTopHeadlines()
-  },[])
-
+ 
+  const [loading, setLoading] = useState(false)
   return (
     <>
-    <NewsCarousel topheadlines={topheadlines} /> 
+    <NewsCarousel topheadlines={data.articles} /> 
       <h1 style={{marginTop: '5px'}}>Top Trending</h1>
       {loading ? (
         <Loader />
@@ -32,9 +20,11 @@ const HomeScreen = () => {
       
         <Container>
         <Row>
-            {topheadlines.map((topnews) => (
+            {data.articles.map((topnews) => (
                 <Col sm={6} md={6} lg={6} xl={4}>
+                  {/* <NavLink style={{textDecoration:'none'}} to={`/newspage/${topnews.title}`}> */}
                 <NewsCard topnews={topnews} />
+                {/* </NavLink> */}
               </Col>
             ))}
 

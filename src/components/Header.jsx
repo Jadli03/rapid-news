@@ -14,6 +14,11 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
+            <LinkContainer to='/about'>
+                  <Nav.Link>
+                  <i style={{color: 'blue', fontSize: '15px'}} class="fa-solid fa-circle-info"></i> About Us
+                  </Nav.Link>
+                </LinkContainer>
                 <LinkContainer to='/login'>
                   <Nav.Link>
                   <i style={{color: 'green', fontSize: '15px'}} className="fa-solid fa-arrow-right-to-bracket"></i> Sign In
